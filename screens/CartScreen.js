@@ -3,22 +3,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
 
-const HomeScreen = ({ navigation }) => {
+const CartScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button 
-        title="Go to details screen"
-        onPress={() => navigation.navigate("Search")}
-      />
+      <Text>Cart Screen</Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default CartScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -3,22 +3,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
 
-const HomeScreen = ({ navigation }) => {
+const SearchScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button 
-        title="Go to details screen"
-        onPress={() => navigation.navigate("Search")}
-      />
+      <Text>Search Screen</Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default SearchScreen;
 
 const styles = StyleSheet.create({
   container: {

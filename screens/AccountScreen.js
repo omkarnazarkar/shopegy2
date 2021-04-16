@@ -5,15 +5,15 @@ import {
   View,
 } from 'react-native';
 
-const DetailsScreen = () => {
+const AccountScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Details Screen</Text>
+      <Text>Account Screen</Text>
     </View>
   );
 };
 
-export default DetailsScreen;
+export default AccountScreen;
 
 const styles = StyleSheet.create({
   container: {
