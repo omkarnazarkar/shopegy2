@@ -11,13 +11,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainTabScreens from './screens/MainTabScreens';
 import { DrawerContent } from './screens/DrawerContent';
+import SettingsScreens from './screens/SettingsScreen';
 const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} /> }>
-        <Drawer.Screen name="Home" component={MainTabScreens} />
+        <Drawer.Screen name="HomeDrawer" component={MainTabScreens} />
+        <Drawer.Screen name="Settings" component={SettingsScreens} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
