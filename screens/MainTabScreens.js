@@ -16,7 +16,7 @@ const HomeStackScreens = ({ navigation }) => (
   <HomeStack.Navigator 
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#1a237e',
+        backgroundColor: '#581359',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -31,7 +31,7 @@ const HomeStackScreens = ({ navigation }) => (
         headerLeft: () => (
           <Icon.Button 
             name="ios-menu" size={25} 
-            backgroundColor="#1a237e" onPress={() => navigation.openDrawer()}
+            backgroundColor="#581359" onPress={() => navigation.openDrawer()}
           />
         )
       }}
@@ -43,7 +43,7 @@ const SearchStackScreens = ({ navigation }) => (
   <SearchStack.Navigator 
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#1a237e',
+        backgroundColor: '#581359',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -58,7 +58,7 @@ const SearchStackScreens = ({ navigation }) => (
         headerLeft: () => (
           <Icon.Button 
             name="ios-menu" size={25} 
-            backgroundColor="#1a237e" onPress={() => navigation.openDrawer()}
+            backgroundColor="#581359" onPress={() => navigation.openDrawer()}
           />
         )
       }}   
@@ -70,7 +70,7 @@ const MainTabScreens = () => (
   <Tab.Navigator
     initialRouteName="Home"
     activeColor="#fff"
-    barStyle={{ backgroundColor: '#1a237e' }}
+    barStyle={{ backgroundColor: '#581359' }}
   >
     <Tab.Screen
       name="Home"
