@@ -8,24 +8,30 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
+  Alert,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
+import Users from '../model/users';
+import { AuthContext } from '../components/AppContext';
+
 const initialState = {
-  email: '',
+  userName: '',
   password: '',
-  isValidEmail: false,
+  isValidUserName: false,
   secureTextEntry: true,
 }
 
 const SignInScreen = ({ navigation }) => {
   const [data, setData] = React.useState(initialState);
+  const { signIn } = React.useContext(AuthContext);
+
   const onInputChange = (key, value) => {
-    const validData = key === 'email'
-      ? { isValidEmail: !!value.length }
+    const validData = key === 'userName'
+      ? { isValidUserName: !!value.length }
       : {};
     setData({
       ...data,
@@ -40,6 +46,19 @@ const SignInScreen = ({ navigation }) => {
     });
   }
 
+  const loginHandle = () => {
+    const loginUser = Users.find(user => 
+      (user.userName === data.userName && user.password === data.password)
+    );
+    if (!loginUser) {
+      Alert.alert('Invalid User', 'Username or password is incorrect', [
+        {text: 'Okay'}
+      ]);
+      return
+    }
+    signIn(loginUser);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -49,7 +68,7 @@ const SignInScreen = ({ navigation }) => {
         style={styles.footer}
         animation="fadeInUpBig"
       >
-        <Text style={styles.text_footer}>Email</Text>
+        <Text style={styles.text_footer}>Username</Text>
         <View style={styles.action}>
           <FontAwesome 
             name="user-o"
@@ -57,12 +76,12 @@ const SignInScreen = ({ navigation }) => {
             size={20}
           />
           <TextInput
-            placeholder="Enter Email"
+            placeholder="Enter UserName"
             style={styles.textInput}
             autoCapitalize="none"
-            onChangeText={(val) => onInputChange('email', val)}
+            onChangeText={(val) => onInputChange('userName', val)}
           />
-          {data.isValidEmail && (
+          {data.isValidUserName && (
             <Animatable.View
               animation="bounceIn"  
             >
@@ -101,12 +120,17 @@ const SignInScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.button}>
-          <LinearGradient
-            colors={['#881359', '#581359']}
-            style={styles.signIn}
+          <TouchableOpacity
+              style={styles.signIn}
+              onPress={loginHandle}
           >
-            <Text style={[styles.textSign, styles.whiteColor]}>Sign In</Text>
-          </LinearGradient>
+            <LinearGradient
+              colors={['#881359', '#581359']}
+              style={styles.signIn}
+            >
+              <Text style={[styles.textSign, styles.whiteColor]}>Sign In</Text>
+            </LinearGradient>
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('SignUpScreen')}
             style={[styles.signIn, {

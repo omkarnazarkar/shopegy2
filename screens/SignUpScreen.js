@@ -15,10 +15,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
 const initialState = {
-  email: '',
+  userName: '',
   password: '',
   confirmPassword: '',
-  isValidEmail: false,
+  isValidUserName: false,
   secureTextEntry: true,
   confirmSecureTextEntry: true,
 }
@@ -26,8 +26,8 @@ const initialState = {
 const SignUpScreen = ({ navigation }) => {
   const [data, setData] = React.useState(initialState);
   const onInputChange = (key, value) => {
-    const validData = key === 'email'
-      ? { isValidEmail: !!value.length }
+    const validData = key === 'userName'
+      ? { isValidUserName: !!value.length }
       : {};
     setData({
       ...data,
@@ -51,7 +51,7 @@ const SignUpScreen = ({ navigation }) => {
         style={styles.footer}
         animation="fadeInUpBig"
       >
-        <Text style={styles.text_footer}>Email</Text>
+        <Text style={styles.text_footer}>Username</Text>
         <View style={styles.action}>
           <FontAwesome 
             name="user-o"
@@ -59,12 +59,12 @@ const SignUpScreen = ({ navigation }) => {
             size={20}
           />
           <TextInput
-            placeholder="Enter Email"
+            placeholder="Enter UserName"
             style={styles.textInput}
             autoCapitalize="none"
-            onChangeText={(val) => onInputChange('email', val)}
+            onChangeText={(val) => onInputChange('userName', val)}
           />
-          {data.isValidEmail && (
+          {data.isValidUserName && (
             <Animatable.View
               animation="bounceIn"  
             >
